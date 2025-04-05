@@ -8,8 +8,8 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Etc/UTC
-      - SERVERURL=wireguard.baslawson.net #optional
+      - TZ=Australia/Sydney
+      - SERVERURL=auto #optional - set to auto for accessing from remote places
       - SERVERPORT=51820 #optional
       - PEERS=1 #optional
       - PEERDNS=auto #optional
@@ -24,4 +24,5 @@ services:
       - 51820:51820/udp
     sysctls:
       - net.ipv4.conf.all.src_valid_mark=1
+      - net.ipv4.ip_forward=1 #This allows clients to access other devices on the netwwork
     restart: unless-stopped
